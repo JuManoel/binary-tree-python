@@ -27,8 +27,8 @@ class Node():
         funcion que retorna el nodo en que esta el valor que buscas
         caso el valor que buscas no esta en el arbole, retorna que el valor esta malo
         """
-        self.__validarValor__(val)
-        val = self.__conveterVal__(val)
+        # self.__validarValor__(val)
+        # val = self.__conveterVal__(val)
         if (self.val == val):
             return self
         if (val > self.val):
@@ -50,7 +50,7 @@ class Node():
             return f"{self.val} {self.nodeD.inOrden()} "
         if (self.nodeE is not None and self.nodeD is None):
             return f"{self.nodeE.inOrden()} {self.val} "
-        return f" {self.val} "
+        return f"{self.val} "
 
     def preOrden(self):
         """
@@ -62,19 +62,19 @@ class Node():
             return f"{self.val} {self.nodeD.preOrden()} "
         if (self.nodeE is not None and self.nodeD is None):
             return f"{self.val} {self.nodeE.preOrden()} "
-        return f" {self.val} "
+        return f"{self.val} "
 
     def posOrden(self):
         """
         Percorre el arbole en posOrden, utilizando recursion
         """
         if (self.nodeE is not None and self.nodeD is not None):
-            return f"{self.nodeE.posOrden()} {self.nodeD.posOrden()} {self.val}"
+            return f"{self.nodeE.posOrden()} {self.nodeD.posOrden()} {self.val} "
         if (self.nodeE is None and self.nodeD is not None):
-            return f"{self.nodeD.posOrden()} {self.val}"
+            return f"{self.nodeD.posOrden()} {self.val} "
         if (self.nodeE is not None and self.nodeD is None):
-            return f"{self.nodeE.posOrden()} {self.val}"
-        return f"{self.val}"
+            return f"{self.nodeE.posOrden()} {self.val} "
+        return f"{self.val} "
 
     def adicionarVal(self, val):
         """
@@ -83,7 +83,6 @@ class Node():
         Utilizando recursion, me permite buscar el local ideal para el nuevo valor
         """
         self.__validarValor__(val)
-        val = self.__conveterVal__(val)
         if (self.val == val):
             raise ValueError(f"El valor {val} ya existe en el arbole")
         if (val > self.val):
@@ -102,17 +101,19 @@ class Node():
         funcion unicamente para saber si el valor es de tipo valido
         retorna una exepcion caso que no
         """
-        if not isinstance(val, (int, float)):
+        if (type(val) != type(0) and type(val) != type(0.0)):
             raise TypeError(
-                f"El valor del nodo tiene que ser numerico, no puede ser {val}")
+                f"El valor del nodo tiene q ser numerico, no puede ser {val}")
+        return
 
     def __validarNode__(self, node):
         """
         Funcion unicamente para saber si el node esta bien
         retorna una execpcion caso que no
         """
-        if not isinstance(node, (Node, type(None))):
-            raise TypeError(f"El nodo no puede ser: {node}")
+        if (type(node) != type(Node) and type(node) != type(None)):
+            raise TypeError(f"El nodo esquierdo no puede ser: {node}")
+        return
 
     def __conveterVal__(self, val):
         """
@@ -120,17 +121,17 @@ class Node():
         la memoria es un recurso esencial en los arboles, entonces, converter para el tipo de dato
         ideal, es una prioridad
         """
-        if isinstance(val, int):
-            if np.iinfo(np.int8).min <= val <= np.iinfo(np.int8).max:
+        if (type(val) == type(0)):
+            if val < np.iinfo(np.int8).max and val > np.iinfo(np.int8).min:
                 return np.int8(val)
-            elif np.iinfo(np.int16).min <= val <= np.iinfo(np.int16).max:
+            elif val < np.iinfo(np.int16).max and val > np.iinfo(np.int16).min:
                 return np.int16(val)
-            elif np.iinfo(np.int32).min <= val <= np.iinfo(np.int32).max:
+            elif val < np.iinfo(np.int32).max and val > np.iinfo(np.int32).min:
                 return np.int32(val)
             else:
                 return np.int64(val)
-        elif isinstance(val, float):
-            if np.finfo(np.float32).min <= val <= np.finfo(np.float32).max:
+        elif (type(val) == type(0.0)):
+            if val < np.finfo(np.float32).max and val > np.finfo(np.float32).min:
                 return np.float32(val)
             else:
                 return np.float64(val)
