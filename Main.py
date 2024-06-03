@@ -47,6 +47,7 @@ if(resp.lower()=="si"):
             for i in range(n):
                 print(f"ingrese el valor {i+1}")
                 val = int(input())
+                val = Node(val).val
                 tree.adicionarVal(val)
             clear_screen()
             print("Valor(es) ingresado(s) con sucesso")
