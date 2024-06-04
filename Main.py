@@ -1,4 +1,5 @@
 from Node import Node
+from NodeAnimals import NodeAnimals
 import os
 import platform
 
@@ -20,8 +21,8 @@ def clear_screen():
     else:
         os.system('clear')
 
-clear_screen()
 
+clear_screen()
 
 
 tree = None
@@ -32,16 +33,16 @@ menu = """1. Ingresar nuevo elemento    4. Mostrar en preOrden
 
 print("Deseas crear un arbole? (Si/No)")
 resp = input()
-if(resp.lower()=="si"):
+if (resp.lower() == "si"):
     print("Ingrese el valor inicial")
     val = int(input())
     tree = Node(val)
     clear_screen()
-    while(resp.lower()!="6"):
+    while (resp.lower() != "6"):
         print(menu)
         resp = input()
 
-        if(resp == "1"):
+        if (resp == "1"):
             print("Cuantos valores vas ingresar?")
             n = int(input())
             for i in range(n):
@@ -56,7 +57,7 @@ if(resp.lower()=="si"):
             print(f"Pre Orden: {tree.preOrden()}")
             print(f"Pos Orden: {tree.posOrden()}")
 
-        elif(resp == "2"):
+        elif (resp == "2"):
             print("Que valor estas buscando?")
             val = int(input())
             node = tree.findVal(val)
@@ -68,31 +69,39 @@ if(resp.lower()=="si"):
             print(f"In Orden: {node.inOrden()}")
             print(f"Pre Orden: {node.preOrden()}")
             print(f"Pos Orden: {node.posOrden()}")
-            
-        elif(resp == "3"):
+
+        elif (resp == "3"):
             clear_screen()
             print("In Orden")
             print(tree.inOrden())
 
-        elif(resp=="4"):
+        elif (resp == "4"):
             clear_screen()
             print("Pre Orden")
             print(tree.preOrden())
 
-        elif(resp=="5"):
+        elif (resp == "5"):
             clear_screen()
             print("Pos Orden")
             print(tree.posOrden())
 
-        elif(resp=="6"):
+        elif (resp == "6"):
             clear_screen()
             print("Hasta luego")
 
         else:
             clear_screen()
             print("Esa opcion no existe")
-
 else:
-    clear_screen()
-    print("Hasta luego")
-        
+    print("Quieres que adivine el animal? (si/no)")
+    resp = input()
+    if (resp.lower() == "si"):
+        animalTree = NodeAnimals(
+            pergunta = "Estas pensando en un animal?", animal="pajaro", respA = "si")
+        while (resp != "no"):
+            animalTree.preguntar()
+            print("Quieres jugar de nuevo?")
+            resp = input()
+
+clear_screen()
+print("Hasta luego")

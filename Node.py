@@ -11,6 +11,7 @@ que nos regala un "control" de la memoria muy bueno
 El throw que tenemos en java, aca en python es raise Execption
 """
 
+
 class Node():
     def __init__(self, val=0, nodeD=None, nodeE=None) -> None:
         """
@@ -111,11 +112,12 @@ class Node():
         """
         # aca valido el tipo de dato "primitivo"
         if (type(val) != type(0) and type(val) != type(0.0)):
-            #creo unas listas de los tipos de datos de numpy
-            tipos_enteros = (np.int8, np.int16, np.int32, np.int64, np.intc, np.int_)
+            # creo unas listas de los tipos de datos de numpy
+            tipos_enteros = (np.int8, np.int16, np.int32,
+                             np.int64, np.intc, np.int_)
             tipos_flotantes = (np.float16, np.float32, np.float64, np.float_)
-            #valido si es hijo de eses tipos
-            if(isinstance(val, tipos_enteros) and isinstance(val, tipos_flotantes)):
+            # valido si es hijo de eses tipos
+            if (isinstance(val, tipos_enteros) and isinstance(val, tipos_flotantes)):
                 raise TypeError(
                     f"El valor del nodo tiene q ser numerico, no puede ser {val}")
         return
