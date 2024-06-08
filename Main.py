@@ -1,5 +1,6 @@
 from Node import Node
 from NodeAnimals import NodeAnimals
+from Fibonacci import Fibonacci
 import os
 import platform
 
@@ -97,11 +98,20 @@ else:
     resp = input()
     if (resp.lower() == "si"):
         animalTree = NodeAnimals(
-            pergunta = "Estas pensando en un animal?", animal="pajaro", respA = "si")
+            pergunta = "Estas pensando en un animal?", resp1= NodeAnimals(animal="pajaro"))
         while (resp != "no"):
             animalTree.preguntar()
             print("Quieres jugar de nuevo?")
             resp = input()
+    else:
+        print("quieres calcular el numero N de fibonacci?")
+        resp = input()
+        if(resp.lower() == "si"):
+            print("ingrese un numero")
+            n = input()
+            fibo = Fibonacci(n)
+            print(f"El numero {n} del fibonacci es: {fibo.calcular()}")
+            input()
 
 clear_screen()
 print("Hasta luego")

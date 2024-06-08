@@ -15,50 +15,46 @@ class NodeAnimals():
         pregunta = input()
         print(f"Si el animal fuera un {animal}, cuál sería la respuesta?")
         resp = input()
-        node = NodeAnimals(pergunta=pregunta, animal=animal, respA=resp)
-        self.__validarNode__(node)
-        if (resp.lower() == "si"):
-            self.resp1 = node
-            self.resp2 = NodeAnimals(animal=self.animal,respA="no")
+        node1 = NodeAnimals(animal=self.animal)
+        node2 = NodeAnimals(animal=animal)
+        self.animal = ""
+        self.pergunta = pregunta
+        self.respA = ""
+        self.__validarNode__(node1)
+        self.__validarNode__(node2)
+        if(resp.lower() == "si"):
+            self.resp1 = node2
+            self.resp2 = node1
         elif (resp.lower() == "no"):
-            self.resp2 = node
-            self.resp1 = NodeAnimals(animal=self.animal,respA="si")
+            self.resp2 = node2
+            self.resp1 = node1
         else:
             print("Esa respuesta es invalida")
 
     def preguntar(self):
-        print(self.pergunta)
-        resp = input()
-        if (resp.lower() == self.respA):
+        if (self.pergunta != ""):
+            print(self.pergunta)
+            resp = input()
             if (resp.lower() == "si"):
                 if (self.resp1 is not None):
                     self.resp1.preguntar()
                     return
+                self.adicionar()
             elif (resp.lower() == "no"):
                 if (self.resp2 is not None):
                     self.resp2.preguntar()
                     return
+                self.adicionar
+        else:
             print(f"Es un: {self.animal}?")
             resp = input()
             if (resp.lower() == "no"):
                 if (self.resp2 is not None):
-                    self.resp2.preguntar()
+                    self.preguntar()
                     return
                 self.adicionar()
                 return
             print("Voy un genio, no?")
-            return
-        if (resp.lower() == "si"):
-            if (self.resp1 is not None):
-                self.resp1.preguntar()
-                return
-            self.adicionar()
-        elif (resp.lower() == "no"):
-            if (self.resp2 is not None):
-                self.resp2.preguntar()
-                return
-            self.adicionar
-        return
 
     def __validarNode__(self, node):
         """
