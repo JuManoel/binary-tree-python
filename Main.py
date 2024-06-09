@@ -28,9 +28,10 @@ clear_screen()
 
 
 tree = None
-menu = """1. Ingresar nuevo elemento    4. Mostrar en preOrden
-2. Buscar Elmento             5. Mostrar en posOrden
-3. Mostrar en inOrden         6. Salir
+menu = """1. Ingresar nuevo elemento    5. Mostrar en preOrden
+2. Buscar Elmento             6. Mostrar el Minimo
+3. Mostrar en inOrden         7. Mostrar el Maximo
+4. Mostrar en posOrden        8. salir
 """
 
 print("Deseas crear un arbole? (Si/No)")
@@ -40,7 +41,7 @@ if (resp.lower() == "si"):
     val = int(input())
     tree = Node(val)
     clear_screen()
-    while (resp.lower() != "6"):
+    while (resp.lower() != "8"):
         print(menu)
         resp = input()
 
@@ -79,15 +80,23 @@ if (resp.lower() == "si"):
 
         elif (resp == "4"):
             clear_screen()
-            print("Pre Orden")
-            print(tree.preOrden())
-
-        elif (resp == "5"):
-            clear_screen()
             print("Pos Orden")
             print(tree.posOrden())
 
-        elif (resp == "6"):
+        elif (resp == "5"):
+            clear_screen()
+            print("Pre Orden")
+            print(tree.preOrden())
+
+        elif(resp == "6"):
+            clear_screen()
+            print(f"El valor minimo es: {tree.min()}")
+
+        elif(resp == "7"):
+            clear_screen()
+            print(f"El valor maximo es: {tree.max()}")
+
+        elif (resp == "8"):
             clear_screen()
             print("Hasta luego")
 
