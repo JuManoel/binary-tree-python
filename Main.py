@@ -3,6 +3,7 @@ from NodeAnimals import NodeAnimals
 from Fibonacci import Fibonacci
 import os
 import platform
+from Expresion import ExpressionTree
 
 """
 Autor@: Juan Manoel Miranda Gómez
@@ -112,6 +113,16 @@ else:
             fibo = Fibonacci(n)
             print(f"El numero {n} del fibonacci es: {fibo.calcular()}")
             input()
+        else:
+            print("Quieres que resulva problemas matematicos?")
+            resp =input()
+            if(resp.lower()=="si"):
+                print("ingrese a expresion")
+                exp_tree = ExpressionTree(input())
+                result = exp_tree.evaluate()
+                print(f"Resultado: {result}")
+                input()
+
 
 clear_screen()
 print("Hasta luego")

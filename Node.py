@@ -104,6 +104,16 @@ class Node():
                 self.nodeE = Node(val)
                 return
             self.nodeE.adicionarVal(val)
+    
+    def max(self):
+        if(self.nodeD is None):
+            return self.val
+        return self.nodeD.max()
+    
+    def min(self):
+        if(self.nodeE is None):
+            return self.val
+        return self.nodeE.min()
 
     def __validarValor__(self, val):
         """
