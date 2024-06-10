@@ -128,7 +128,7 @@ else:
             if(resp.lower()=="si"):
                 print("ingrese a expresion")
                 exp_tree = ExpressionTree(input())
-                result = exp_tree.evaluate()
+                result = exp_tree.calcular()
                 print(f"Resultado: {result}")
                 input()
 
